@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Bit Binary Multi-Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main App Container -->
+    <div id="app">
+        <!-- Top Navigation Bar -->
+        <header class="app-header">
+            <div class="header-container">
+                <div class="brand" id="nav-brand">
+                    <div class="logo-icon">
+                        <span>4</span>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">BinaryCraft</span>
+                        <span class="brand-subtitle">4-Bit Multi-Function Engine</span>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <button class="nav-btn active" data-target="home-view" id="nav-home-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        Home
+                    </button>
+                    <button class="nav-btn theme-arithmetic" data-target="arithmetic-view" id="nav-arithmetic-btn">
+                        <span class="nav-color-dot dot-arithmetic"></span>
+                        Arithmetic
+                    </button>
+                    <button class="nav-btn theme-bitwise" data-target="bitwise-view" id="nav-bitwise-btn">
+                        <span class="nav-color-dot dot-bitwise"></span>
+                        Bitwise
+                    </button>
+                    <button class="nav-btn theme-conversion" data-target="conversion-view" id="nav-conversion-btn">
+                        <span class="nav-color-dot dot-conversion"></span>
+                        Conversions
+                    </button>
+                    <button class="nav-btn theme-code" data-target="code-view" id="nav-code-btn">
+                        <span class="nav-color-dot dot-code"></span>
+                        BCD • Excess-3
+                    </button>
+                    <button class="nav-btn theme-gray" data-target="gray-view" id="nav-gray-btn">
+                        <span class="nav-color-dot dot-gray"></span>
+                        Gray Code
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- VIEW 1: HOME PAGE (Blue & White Theme with Operation Color Badges) -->
+        <main id="home-view" class="view-container active">
+            <section class="hero-section">
+                <div class="hero-badge">4-Bit Fixed Word Length System</div>
+                <h1 class="hero-title">Binary & Digital Logic Suite</h1>
+                <p class="hero-description">
+                    Explore arithmetic, bitwise gates, number base conversions, and binary code transformations with interactive bit toggles and real-time computation.
+                </p>
+
+                <!-- Color Palette Guide Banner on Home Page -->
+                <div class="operation-theme-banner">
+                    <span class="banner-label">Operation Module Palette:</span>
+                    <div class="theme-tags">
+                        <span class="theme-tag tag-arithmetic"><i class="dot"></i> Arithmetic</span>
+                        <span class="theme-tag tag-bitwise"><i class="dot"></i> Bitwise Logic</span>
+                        <span class="theme-tag tag-conversion"><i class="dot"></i> Base Conversion</span>
+                        <span class="theme-tag tag-code"><i class="dot"></i> BCD • Excess-3</span>
+                        <span class="theme-tag tag-gray"><i class="dot"></i> Binary • Gray Code</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4 Module Cards Grid -->
+            <section class="modules-grid">
+                <!-- Card 1: Arithmetic -->
+                <div class="module-card card-arithmetic" data-module="arithmetic-view" id="card-arithmetic">
+                    <div class="card-top">
+                        <div class="card-icon icon-arithmetic">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </div>
+                        <span class="operation-badge badge-arithmetic">Module 01</span>
+                    </div>
+                    <h2 class="card-title">16-Bit Arithmetic Operations</h2>
+                    <p class="card-desc">
+                        Perform 16-bit binary addition, subtraction, multiplication, and division. Includes interactive bit toggles, 2's complement representation, and overflow detection.
+                    </p>
+                    <div class="card-features">
+                        <span>+ − × ÷ Operations</span>
+                        <span>16-Bit Precision</span>
+                        <span>Overflow Detection</span>
+                    </div>
+                    <button class="card-btn btn-arithmetic">
+                        Launch Arithmetic
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+
+                <!-- Card 2: Bitwise -->
+                <div class="module-card card-bitwise" data-module="bitwise-view" id="card-bitwise">
+                    <div class="card-top">
+                        <div class="card-icon icon-bitwise">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        </div>
+                        <span class="operation-badge badge-bitwise">Module 02</span>
+                    </div>
+                    <h2 class="card-title">Bitwise Operations</h2>
+                    <p class="card-desc">
+                        Execute logic gate operations: AND, OR, XOR, NOT, NAND, NOR, and XNOR with live 4-bit truth table visualization.
+                    </p>
+                    <div class="card-features">
+                        <span>7 Logic Gates</span>
+                        <span>Dual Input (Bin/Dec)</span>
+                        <span>4-Bit Truth Table</span>
+                    </div>
+                    <button class="card-btn btn-bitwise">
+                        Launch Bitwise Logic
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+
+                <!-- Card 3: Conversion -->
+                <div class="module-card card-conversion" data-module="conversion-view" id="card-conversion">
+                    <div class="card-top">
+                        <div class="card-icon icon-conversion">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="8 21 3 21 3 16"></polyline><line x1="20" y1="4" x2="3" y2="21"></line></svg>
+                        </div>
+                        <span class="operation-badge badge-conversion">Module 03</span>
+                    </div>
+                    <h2 class="card-title">Conversion of Numbers</h2>
+                    <p class="card-desc">
+                        Simultaneously convert decimal values into 4-bit binary, octal, and hexadecimal representations with interactive bit flipping.
+                    </p>
+                    <div class="card-features">
+                        <span>Decimal ↔ Binary</span>
+                        <span>Octal (Base-8)</span>
+                        <span>Hexadecimal (Base-16)</span>
+                    </div>
+                    <button class="card-btn btn-conversion">
+                        Launch Conversions
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+
+                <!-- Card 4: BCD • Excess-3 Code Converter -->
+                <div class="module-card card-code" data-module="code-view" id="card-code">
+                    <div class="card-top">
+                        <div class="card-icon icon-code">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <span class="operation-badge badge-code">Module 04</span>
+                    </div>
+                    <h2 class="card-title">BCD • Excess-3 Converter</h2>
+                    <p class="card-desc">
+                        Convert between Binary Coded Decimal (8421) and Self-Complementing Excess-3 Code with automatic Don't Care (X) detection for 1010–1111.
+                    </p>
+                    <div class="card-features">
+                        <span>BCD ↔ Excess-3</span>
+                        <span>Don't Care 'X' Check</span>
+                        <span>Interactive Bit Switch</span>
+                    </div>
+                    <button class="card-btn btn-code">
+                        Launch BCD Converter
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+
+                <!-- Card 5: Binary • Gray Code Converter -->
+                <div class="module-card card-gray" data-module="gray-view" id="card-gray-module">
+                    <div class="card-top">
+                        <div class="card-icon icon-gray">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 4l-6 6-6-6"/><path d="M6 20l6-6 6 6"/><circle cx="12" cy="12" r="2"/></svg>
+                        </div>
+                        <span class="operation-badge badge-gray">Module 05</span>
+                    </div>
+                    <h2 class="card-title">Binary • Gray Code Converter</h2>
+                    <p class="card-desc">
+                        Convert between standard Binary and Unit Distance (Reflected Gray) Code in both directions with live bit toggles and step-by-step XOR gate logic.
+                    </p>
+                    <div class="card-features">
+                        <span>Binary ↔ Gray Code</span>
+                        <span>Unit Distance Logic</span>
+                        <span>Step-by-Step XOR</span>
+                    </div>
+                    <button class="card-btn btn-gray">
+                        Launch Gray Code
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- VIEW 2: MODULE 1 - ARITHMETIC OPERATIONS (Blue Theme) -->
+        <main id="arithmetic-view" class="view-container module-theme-arithmetic">
+            <div class="module-header-bar">
+                <button class="back-to-home-btn" data-target="home-view">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Home
+                </button>
+                <div class="module-title-wrap">
+                    <span class="module-tag tag-arithmetic">Module 01</span>
+                    <h2>16-Bit Arithmetic Operations</h2>
+                </div>
+            </div>
+
+            <div class="module-content">
+                <div class="arithmetic-layout">
+                    <!-- Column A -->
+                    <div class="input-card">
+                        <div class="card-mode-header">
+                            <h3>Operand A</h3>
+                            <div class="mode-toggle">
+                                <button class="mode-btn active" data-arith-input="a" data-mode="bin">Binary</button>
+                                <button class="mode-btn" data-arith-input="a" data-mode="dec">Decimal</button>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="arith-bin-a" class="bit-input" placeholder="0000 0000 0000 0000" maxlength="19" value="0000 0000 0000 0101">
+                            <span class="input-clear" id="arith-clear-a">&times;</span>
+                        </div>
+                        <div class="input-error-msg" id="arith-err-a">Invalid input for selected mode (16-bit binary or -32768 to 65535 decimal).</div>
+                        
+                        <!-- Interactive Bit Strip A (16-Bit) -->
+                        <div class="bit-strip-container">
+                            <label>Interactive Bit Switch (A) [16-Bit]:</label>
+                            <div class="bit-strip bit-strip-16" id="bit-strip-arith-a"></div>
+                        </div>
+
+                        <div class="decimal-preview-box">
+                            <span class="lbl">Decimal Equivalent:</span>
+                            <span class="val" id="arith-dec-a">5</span>
+                        </div>
+                    </div>
+
+                    <!-- Middle Operation Selector -->
+                    <div class="ops-column">
+                        <label>Select Operation:</label>
+                        <div class="op-buttons-grid">
+                            <button class="op-btn active" data-op="add" title="Addition (+)">&plus; Add</button>
+                            <button class="op-btn" data-op="sub" title="Subtraction (-)">&#8722; Sub</button>
+                            <button class="op-btn" data-op="mul" title="Multiplication (&times;)">&times; Mul</button>
+                            <button class="op-btn" data-op="div" title="Division (&divide;)">&divide; Div</button>
+                        </div>
+                        <button class="calc-trigger-btn" id="arith-calc-btn">Calculate Result</button>
+                    </div>
+
+                    <!-- Column B -->
+                    <div class="input-card">
+                        <div class="card-mode-header">
+                            <h3>Operand B</h3>
+                            <div class="mode-toggle">
+                                <button class="mode-btn active" data-arith-input="b" data-mode="bin">Binary</button>
+                                <button class="mode-btn" data-arith-input="b" data-mode="dec">Decimal</button>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="arith-bin-b" class="bit-input" placeholder="0000 0000 0000 0000" maxlength="19" value="0000 0000 0000 0011">
+                            <span class="input-clear" id="arith-clear-b">&times;</span>
+                        </div>
+                        <div class="input-error-msg" id="arith-err-b">Invalid input for selected mode (16-bit binary or -32768 to 65535 decimal).</div>
+                        
+                        <!-- Interactive Bit Strip B (16-Bit) -->
+                        <div class="bit-strip-container">
+                            <label>Interactive Bit Switch (B) [16-Bit]:</label>
+                            <div class="bit-strip bit-strip-16" id="bit-strip-arith-b"></div>
+                        </div>
+
+                        <div class="decimal-preview-box">
+                            <span class="lbl">Decimal Equivalent:</span>
+                            <span class="val" id="arith-dec-b">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Box (Binary Only) -->
+                <div class="result-card" id="arith-result-card">
+                    <div class="result-header">
+                        <span class="result-title">Calculation Result</span>
+                        <div class="result-actions">
+                            <button class="screenshot-btn" id="arith-screenshot-btn" title="Download Screenshot of Calculation as PNG">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                    <circle cx="12" cy="13" r="4"></circle>
+                                </svg>
+                                Screenshot
+                            </button>
+                            <div class="status-badge" id="arith-status-badge">Valid 16-Bit Result</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-grid arith-single-result">
+                        <div class="res-item main-binary">
+                            <span class="res-label">16-Bit Binary Result:</span>
+                            <div class="res-binary-display" id="arith-res-bin">0000 0000 0000 1000</div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-alert hidden" id="arith-overflow-alert">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span id="arith-alert-text">Overflow Warning: Result exceeds signed 16-bit range [-32768, 32767] and was truncated to 16 bits!</span>
+                    </div>
+
+                    <div class="step-explanation" id="arith-explanation">
+                        <strong>Calculation Step:</strong> 5 + 3 = 8. Binary: 0000 0000 0000 0101 + 0000 0000 0000 0011 = 0000 0000 0000 1000
+                    </div>
+                </div>
+
+                <!-- Step-by-Step Working Section -->
+                <div class="working-steps-card" id="arith-working-card">
+                    <div class="working-header">
+                        <span class="working-title">Step-by-Step Binary Working</span>
+                        <span class="working-op-badge" id="working-op-badge">Addition (+)</span>
+                    </div>
+                    <div class="working-body" id="arith-working-body">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VIEW 3: MODULE 2 - BITWISE OPERATIONS (Teal Theme) -->
+        <main id="bitwise-view" class="view-container module-theme-bitwise">
+            <div class="module-header-bar">
+                <button class="back-to-home-btn" data-target="home-view">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Home
+                </button>
+                <div class="module-title-wrap">
+                    <span class="module-tag tag-bitwise">Module 02</span>
+                    <h2>4-Bit Bitwise Logic Operations</h2>
+                </div>
+            </div>
+
+            <div class="module-content">
+                <div class="bitwise-layout">
+                    <!-- Column A -->
+                    <div class="input-card">
+                        <div class="card-mode-header">
+                            <h3>Operand A</h3>
+                            <div class="mode-toggle">
+                                <button class="mode-btn active" data-input="a" data-mode="bin">Binary</button>
+                                <button class="mode-btn" data-input="a" data-mode="dec">Decimal</button>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="bit-input-a" class="bit-input" placeholder="Binary or Decimal" maxlength="4" value="1100">
+                        </div>
+                        <div class="input-error-msg" id="bit-err-a">Invalid input for selected mode.</div>
+                        
+                        <div class="bit-strip-container">
+                            <label>Interactive Bit Switch (A):</label>
+                            <div class="bit-strip" id="bit-strip-bitwise-a"></div>
+                        </div>
+
+                        <div class="meta-previews">
+                            <div class="preview-line"><span>4-Bit Binary:</span> <strong id="bit-prev-bin-a">1100</strong></div>
+                            <div class="preview-line"><span>Decimal Value:</span> <strong id="bit-prev-dec-a">12</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Middle Gate Selector -->
+                    <div class="ops-column">
+                        <label>Select Logic Gate:</label>
+                        <div class="gate-buttons-grid gate-buttons-with-icons">
+                            <button class="gate-btn active" data-gate="AND">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="0" y1="35" x2="15" y2="35" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 5 L35 5 A20 20 0 0 1 35 45 L15 45 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                                    <line x1="55" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>AND</span>
+                            </button>
+                            <button class="gate-btn" data-gate="OR">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="0" y1="35" x2="20" y2="35" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 5 Q25 25 15 45 Q38 45 58 25 Q38 5 15 5 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="58" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>OR</span>
+                            </button>
+                            <button class="gate-btn" data-gate="XOR">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="0" y1="35" x2="20" y2="35" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M10 5 Q20 25 10 45" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 5 Q25 25 15 45 Q38 45 58 25 Q38 5 15 5 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="58" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>XOR</span>
+                            </button>
+                            <button class="gate-btn" data-gate="NOT">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="25" x2="15" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 10 L15 40 L50 25 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                                    <circle cx="54" cy="25" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="58" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>NOT</span>
+                            </button>
+                            <button class="gate-btn" data-gate="NAND">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="0" y1="35" x2="15" y2="35" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 5 L35 5 A20 20 0 0 1 35 45 L15 45 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                                    <circle cx="59" cy="25" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="63" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>NAND</span>
+                            </button>
+                            <button class="gate-btn" data-gate="NOR">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="0" y1="35" x2="20" y2="35" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 5 Q25 25 15 45 Q38 45 58 25 Q38 5 15 5 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <circle cx="62" cy="25" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="66" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>NOR</span>
+                            </button>
+                            <button class="gate-btn" data-gate="XNOR">
+                                <svg class="gate-icon" viewBox="0 0 80 50">
+                                    <line x1="0" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="0" y1="35" x2="20" y2="35" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M10 5 Q20 25 10 45" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <path d="M15 5 Q25 25 15 45 Q38 45 58 25 Q38 5 15 5 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <circle cx="62" cy="25" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                    <line x1="66" y1="25" x2="80" y2="25" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                                <span>XNOR</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Column B -->
+                    <div class="input-card" id="bitwise-card-b">
+                        <div class="card-mode-header">
+                            <h3>Operand B</h3>
+                            <div class="mode-toggle">
+                                <button class="mode-btn active" data-input="b" data-mode="bin">Binary</button>
+                                <button class="mode-btn" data-input="b" data-mode="dec">Decimal</button>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="bit-input-b" class="bit-input" placeholder="Binary or Decimal" maxlength="4" value="1010">
+                        </div>
+                        <div class="input-error-msg" id="bit-err-b">Invalid input for selected mode.</div>
+                        
+                        <div class="bit-strip-container">
+                            <label>Interactive Bit Switch (B):</label>
+                            <div class="bit-strip" id="bit-strip-bitwise-b"></div>
+                        </div>
+
+                        <div class="meta-previews">
+                            <div class="preview-line"><span>4-Bit Binary:</span> <strong id="bit-prev-bin-b">1010</strong></div>
+                            <div class="preview-line"><span>Decimal Value:</span> <strong id="bit-prev-dec-b">10</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result & Bit Table Card -->
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-title">Bitwise Gate Result (<span id="active-gate-name">AND</span>)</span>
+                    </div>
+
+                    <div class="result-grid arith-single-result">
+                        <div class="res-item main-binary">
+                            <span class="res-label">4-Bit Binary Result:</span>
+                            <div class="res-binary-display" id="bitwise-res-bin">1000</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Gate Diagram Display -->
+                    <div class="gate-diagram-section" id="gate-diagram-section">
+                        <h4>Active Gate Diagram</h4>
+                        <div class="gate-diagram-canvas" id="gate-diagram-canvas">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Bit-by-bit Logic Table -->
+                    <div class="logic-table-section">
+                        <h4>4-Bit Bitwise Truth Visualization Table</h4>
+                        <div class="table-scroll-container">
+                            <table class="bit-logic-table" id="bit-logic-table">
+                                <!-- Populated dynamically by JS -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VIEW 4: MODULE 3 - CONVERSION OF NUMBERS (Purple Theme) -->
+        <main id="conversion-view" class="view-container module-theme-conversion">
+            <div class="module-header-bar">
+                <button class="back-to-home-btn" data-target="home-view">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Home
+                </button>
+                <div class="module-title-wrap">
+                    <span class="module-tag tag-conversion">Module 03</span>
+                    <h2 id="conv-module-title">4-Bit Number Base Conversions</h2>
+                </div>
+            </div>
+
+            <div class="module-content">
+                <!-- Bit Length Selector — free input -->
+                <div class="conv-bit-length-bar">
+                    <span class="bit-length-label">Word Length:</span>
+                    <div class="bit-length-free">
+                        <input type="number" id="conv-bit-width-input" class="bit-width-input"
+                               min="1" max="32" value="4"
+                               title="Type any bit width from 1–32">
+                        <span class="bit-width-unit">bits</span>
+                    </div>
+                    <div class="bit-length-presets">
+                        <span class="presets-label">Presets:</span>
+                        <button class="bit-preset-btn active" data-bits="4">4</button>
+                        <button class="bit-preset-btn" data-bits="8">8</button>
+                        <button class="bit-preset-btn" data-bits="12">12</button>
+                        <button class="bit-preset-btn" data-bits="16">16</button>
+                        <button class="bit-preset-btn" data-bits="24">24</button>
+                        <button class="bit-preset-btn" data-bits="32">32</button>
+                    </div>
+                </div>
+
+                <div class="conversion-input-card">
+                    <div class="conv-input-header">
+                        <label for="conv-dec-input" id="conv-input-label">Enter Value — Decimal, Hex (0–F), or Binary:</label>
+                        <span class="range-hint" id="conv-range-hint">4-Bit | Range: 0 to 15</span>
+                    </div>
+
+                    <!-- Input Mode Tabs -->
+                    <div class="conv-input-mode-bar">
+                        <span class="conv-mode-label">Input Mode:</span>
+                        <div class="conv-mode-toggle">
+                            <button class="conv-mode-btn active" data-conv-mode="dec">Decimal</button>
+                            <button class="conv-mode-btn" data-conv-mode="hex">Hex (0–F)</button>
+                            <button class="conv-mode-btn" data-conv-mode="bin">Binary</button>
+                        </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input type="text" id="conv-dec-input" class="bit-input" placeholder="e.g. 12 or C or 1100" value="12">
+                    </div>
+                    <div class="input-error-msg" id="conv-err-msg">Value out of range for selected bit width.</div>
+
+                    <!-- Hex Quick-Pad for A–F -->
+                    <div class="hex-pad" id="conv-hex-pad" style="display:none;">
+                        <span class="hex-pad-label">Quick Insert:</span>
+                        <div class="hex-pad-btns">
+                            <button class="hex-pad-btn" data-hex="A">A <span>10</span></button>
+                            <button class="hex-pad-btn" data-hex="B">B <span>11</span></button>
+                            <button class="hex-pad-btn" data-hex="C">C <span>12</span></button>
+                            <button class="hex-pad-btn" data-hex="D">D <span>13</span></button>
+                            <button class="hex-pad-btn" data-hex="E">E <span>14</span></button>
+                            <button class="hex-pad-btn" data-hex="F">F <span>15</span></button>
+                        </div>
+                    </div>
+
+                    <div class="bit-strip-container">
+                        <label id="conv-bitstrip-label">Interactive Bit Switch (Updates Value Live):</label>
+                        <div class="bit-strip" id="bit-strip-conv"></div>
+                    </div>
+                </div>
+
+                <!-- Conversion Output Grid -->
+                <div class="conv-output-grid">
+                    <!-- Binary Card -->
+                    <div class="conv-card conv-card-bin">
+                        <div class="conv-card-header">
+                            <span class="conv-type">Binary (Base-2)</span>
+                            <button class="copy-btn" data-copy="conv-val-bin">Copy</button>
+                        </div>
+                        <div class="conv-value mono" id="conv-val-bin">1100</div>
+                        <p class="conv-subtext" id="conv-bin-subtext">4-Bit Zero-Padded / 2's Complement</p>
+                    </div>
+
+                    <!-- Octal Card -->
+                    <div class="conv-card conv-card-oct">
+                        <div class="conv-card-header">
+                            <span class="conv-type">Octal (Base-8)</span>
+                            <button class="copy-btn" data-copy="conv-val-oct">Copy</button>
+                        </div>
+                        <div class="conv-value mono" id="conv-val-oct">014</div>
+                        <p class="conv-subtext">Base-8 Representation</p>
+                    </div>
+
+                    <!-- Hexadecimal Card -->
+                    <div class="conv-card conv-card-hex">
+                        <div class="conv-card-header">
+                            <span class="conv-type">Hexadecimal (Base-16)</span>
+                            <button class="copy-btn" data-copy="conv-val-hex">Copy</button>
+                        </div>
+                        <div class="conv-value mono" id="conv-val-hex">0xC</div>
+                        <p class="conv-subtext">Base-16 Format (A=10, B=11, C=12, D=13, E=14, F=15)</p>
+                    </div>
+                </div>
+
+                <!-- Breakdown Info -->
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-title" id="conv-breakdown-title">4-Bit Binary Breakdown</span>
+                    </div>
+                    <div class="nibble-breakdown-grid" id="conv-nibble-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VIEW 5: MODULE 4 - BCD • EXCESS-3 CONVERTER (Amber Theme) -->
+        <main id="code-view" class="view-container module-theme-code">
+            <div class="module-header-bar">
+                <button class="back-to-home-btn" data-target="home-view">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Home
+                </button>
+                <div class="module-title-wrap">
+                    <span class="module-tag tag-code">Module 04</span>
+                    <h2>BCD • Excess-3 Converter</h2>
+                </div>
+            </div>
+
+            <div class="module-content">
+                <div class="converter-split-layout">
+                    <!-- Left: Converter Card -->
+                    <div class="code-converter-card" id="card-bcd">
+                        <div class="card-section-header">
+                            <h3 class="converter-title">BCD &bull; Excess-3 Converter</h3>
+                            <p class="converter-subtitle">Convert between Binary Coded Decimal (8421) and Self-Complementing Excess-3 Code.</p>
+                        </div>
+
+                        <div class="direction-bar">
+                            <span>Direction:</span>
+                            <div class="direction-toggle">
+                                <button class="dir-btn active" data-bcd-dir="bcd2xs3">BCD &rarr; Excess-3</button>
+                                <button class="dir-btn" data-bcd-dir="xs32bcd">Excess-3 &rarr; BCD</button>
+                            </div>
+                        </div>
+
+                        <div class="converter-input-section">
+                            <label id="bcd-input-label">Enter BCD Code (up to 4 bits):</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="bcd-input-field" class="bit-input" placeholder="e.g. 0101" maxlength="4" value="0101">
+                                <span class="input-clear" id="bcd-clear">&times;</span>
+                            </div>
+                            <div class="input-error-msg" id="bcd-err-msg">Only 0s and 1s allowed (up to 4 bits).</div>
+                        </div>
+
+                        <!-- Interactive Bit Switch for BCD -->
+                        <div class="bit-strip-container">
+                            <label>Interactive Bit Switch (4-Bit):</label>
+                            <div class="bit-strip" id="bit-strip-bcd"></div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-header">
+                                <span class="result-title" id="bcd-res-title">Excess-3 Output Code</span>
+                                <div class="result-actions">
+                                    <span class="donotcare-hint">Invalid (1010–1111): <strong>X (Don't Care)</strong></span>
+                                    <button class="copy-btn" data-copy="bcd-result-display">Copy</button>
+                                </div>
+                            </div>
+                            
+                            <div class="code-result-display mono" id="bcd-result-display">
+                                1000
+                            </div>
+
+                            <div class="nibble-map-section">
+                                <h4>Conversion Process &amp; Step-by-Step Calculation</h4>
+                                <div class="step-xor-box bcd-steps-box" id="bcd-nibble-map">
+                                    <!-- Populated dynamically by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Reference & Truth Table Card -->
+                    <div class="code-converter-card">
+                        <div class="card-section-header">
+                            <h3 class="converter-title">4-Bit BCD / Excess-3 Reference Table</h3>
+                            <p class="converter-subtitle">Standard 8421 BCD vs Excess-3 (XS-3 = BCD + 0011₂). Values 10–15 are invalid BCD states.</p>
+                        </div>
+                        <div class="reference-table-container">
+                            <table class="code-reference-table" id="bcd-reference-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dec</th>
+                                        <th>BCD (8421)</th>
+                                        <th>Excess-3</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bcd-table-body">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VIEW 6: MODULE 5 - BINARY • GRAY CODE CONVERTER (Rose Theme) -->
+        <main id="gray-view" class="view-container module-theme-gray">
+            <div class="module-header-bar">
+                <button class="back-to-home-btn" data-target="home-view">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Home
+                </button>
+                <div class="module-title-wrap">
+                    <span class="module-tag tag-gray">Module 05</span>
+                    <h2>Binary • Gray Code Converter</h2>
+                </div>
+            </div>
+
+            <div class="module-content">
+                <div class="converter-split-layout">
+                    <!-- Left: Interactive Converter Card -->
+                    <div class="code-converter-card" id="card-gray">
+                        <div class="card-section-header">
+                            <h3 class="converter-title">Binary &bull; Gray Code Converter</h3>
+                            <p class="converter-subtitle">Convert between standard Binary and Unit Distance (Reflected Gray) Code in both directions.</p>
+                        </div>
+
+                        <div class="direction-bar">
+                            <span>Direction:</span>
+                            <div class="direction-toggle">
+                                <button class="dir-btn active" data-gray-dir="bin2gray">Binary &rarr; Gray Code</button>
+                                <button class="dir-btn" data-gray-dir="gray2bin">Gray Code &rarr; Binary</button>
+                            </div>
+                        </div>
+
+                        <div class="converter-input-section">
+                            <label id="gray-input-label">Enter Binary Number (up to 4 bits):</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="gray-input-field" class="bit-input" placeholder="e.g. 1011" maxlength="4" value="1011">
+                                <span class="input-clear" id="gray-clear">&times;</span>
+                            </div>
+                            <div class="input-error-msg" id="gray-err-msg">Only 0s and 1s allowed (up to 4 bits).</div>
+                        </div>
+
+                        <!-- Interactive Bit Switch for Gray Code -->
+                        <div class="bit-strip-container">
+                            <label>Interactive Bit Switch (4-Bit):</label>
+                            <div class="bit-strip" id="bit-strip-gray"></div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-header">
+                                <span class="result-title" id="gray-res-title">Gray Code Output</span>
+                                <button class="copy-btn" data-copy="gray-result-display">Copy</button>
+                            </div>
+                            
+                            <div class="code-result-display mono" id="gray-result-display">
+                                1110
+                            </div>
+
+                            <div class="nibble-map-section">
+                                <h4>Conversion Process &amp; Step-by-Step XOR Logic</h4>
+                                <div class="step-xor-box" id="gray-steps-container">
+                                    <!-- Populated dynamically by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Reference & Truth Table Card -->
+                    <div class="code-converter-card">
+                        <div class="card-section-header">
+                            <h3 class="converter-title">4-Bit Binary &bull; Gray Code Reference Table</h3>
+                            <p class="converter-subtitle">Reflected Gray Code ensures exactly one bit changes between successive values (Unit Distance / Hamming Distance = 1).</p>
+                        </div>
+                        <div class="reference-table-container">
+                            <table class="code-reference-table" id="gray-reference-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dec</th>
+                                        <th>4-Bit Binary</th>
+                                        <th>4-Bit Gray Code</th>
+                                        <th>Bit Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gray-table-body">
+                                    <!-- Populated dynamically by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="html2canvas.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
